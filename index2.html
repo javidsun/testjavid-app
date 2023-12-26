@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Generator</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 40px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="background-color: aquamarine;">
+    <script>
+        // Funzione per generare un numero casuale in un intervallo
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        // Funzione per generare una tabella HTML
+        function generateTable() {
+            // Creazione di un elemento di tabella
+            var table = document.createElement("table");
+            // Creazione dell'elemento di intestazione (th)
+            var header = table.createTHead();
+            var headerRow = header.insertRow(0);
+            var headerCell = headerRow.insertCell(0);
+            headerCell.textContent = "Header";
+
+            // Creazione dell'elemento del corpo (td)
+            var body = table.createTBody();
+            var bodyRow = body.insertRow(0);
+            var bodyCell = bodyRow.insertCell(0);
+            bodyCell.textContent = "Body";
+
+            // Impostazione dello stile della tabella
+            table.style.position = "absolute";
+            table.style.left = getRandomNumber(0, window.innerWidth - 200) + "px"; // Posizione orizzontale casuale
+            table.style.top = getRandomNumber(0, window.innerHeight - 200) + "px";   // Posizione verticale casuale
+            table.style.backgroundColor = "#b19b9b";
+
+            // Aggiunta della tabella al corpo del documento
+            document.body.appendChild(table);
+        }
+
+        // Numero di tabelle da generare
+        var numberOfTables = 5;
+
+        // Creazione del numero specificato di tabelle
+        for (var i = 0; i < numberOfTables; i++) {
+            generateTable();
+        }
+    </script>
+</body>
+</html>

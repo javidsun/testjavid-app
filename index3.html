@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Generator</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 40px;
+            margin-bottom: 20px; /* Aggiunto margine tra le tabelle */
+        }
+
+        th {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        td {
+            border: none; /* Rimossa la bordatura per le celle del corpo */
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="background-color: aqua;">
+    <script>
+        // Funzione per generare un numero casuale in un intervallo
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        // Definizione della classe Titolo
+        class Titolo {
+            constructor(nome) {
+                this.nome = nome;
+            }
+        }
+
+        // Creazione di una lista di titoli
+        var titoli = [
+            new Titolo("Titolo1"),
+            new Titolo("Titolo2"),
+            new Titolo("Titolo3"),
+            new Titolo("Titolo4"),
+            new Titolo("Titolo5")
+        ];
+
+        // Funzione per generare una tabella HTML
+        function generateTable(titolo) {
+            // Creazione di un elemento di tabella
+            var table = document.createElement("table");
+
+            // Creazione dell'elemento di intestazione (th) con il titolo
+            var header = table.createTHead();
+            var headerRow = header.insertRow(0);
+            var headerCell = headerRow.insertCell(0);
+            headerCell.textContent = titolo.nome;
+
+            // Creazione dell'elemento del corpo (td)
+            var body = table.createTBody();
+            var bodyRow = body.insertRow(0);
+            var bodyCell = bodyRow.insertCell(0);
+            bodyCell.textContent = "Dato"; // Puoi personalizzare il dato qui
+
+            // Impostazione dello stile della tabella
+            table.style.position = "absolute";
+            table.style.left = getRandomNumber(0, window.innerWidth - 200) + "px";
+            table.style.top = getRandomNumber(0, window.innerHeight - 200) + "px";
+            table.style.backgroundColor = "#b19b9b";
+
+            // Aggiunta della tabella al corpo del documento
+            document.body.appendChild(table);
+        }
+
+        // Creazione delle tabelle usando la lista di titoli
+        for (var i = 0; i < titoli.length; i++) {
+            generateTable(titoli[i]);
+        }
+    </script>
+</body>
+</html>
